@@ -11,8 +11,9 @@ import {
   Text,
   View
 } from 'react-native';
+import codePush from "react-native-code-push";
 
-export default class CodePushTutorial extends Component {
+class CodePushTutorial extends Component {
   render() {
     return (
       <View style={styles.container}>
@@ -49,5 +50,10 @@ const styles = StyleSheet.create({
     marginBottom: 5,
   },
 });
+
+let codePushOptions = { checkFrequency: codePush.CheckFrequency.ON_APP_RESUME, installMode: codePush.InstallMode.ON_NEXT_RESUME };
+CodePushTutorial = codePush(codePushOptions)(CodePushTutorial);
+
+export default CodePushTutorial;
 
 AppRegistry.registerComponent('CodePushTutorial', () => CodePushTutorial);
